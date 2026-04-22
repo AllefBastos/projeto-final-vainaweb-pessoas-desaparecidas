@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import './formulario.css'
 
+BACKEND_URL = process.env.BACKEND_URL || "http://localhost:3000"
+
 const Formulario = ({ onBackHome }) => {
 
   const [nome, setNome] = useState('')
@@ -27,7 +29,7 @@ const Formulario = ({ onBackHome }) => {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/pessoa", {
+      const response = await fetch(`${BACKEND_URL}/pessoa`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
