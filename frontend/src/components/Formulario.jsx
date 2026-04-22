@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './formulario.css'
 
-BACKEND_URL = process.env.BACKEND_URL || "http://localhost:3000"
+const BACKEND_URL = process.env.BACKEND_URL
 
 const Formulario = ({ onBackHome }) => {
 
