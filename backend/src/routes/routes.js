@@ -7,6 +7,7 @@ router.get('/', (req, res) => {
   res.send('Servidor rodando em rotas!');
 });
 
+criarTabela(); // Cria a tabela no banco de dados (se ainda não existir)
 router.get('/pessoas', selectPessoas); // Rota para listar todas as pessoas
 router.get('/pessoa', selectPessoa); // Rota para listar uma pessoa específica por ID
 router.post('/pessoa', inserirPessoa); // Rota para criar uma nova pessoa

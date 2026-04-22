@@ -1,0 +1,318 @@
+/* ==================== HEADER ==================== */
+.home-header {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  color: white;
+  padding: 3rem 2rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: slideDown 0.6s ease-out;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.home-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: -1px;
+}
+
+.home-subtitle {
+  font-size: 1.25rem;
+  font-weight: 300;
+  opacity: 0.95;
+}
+
+/* ==================== MAIN CONTENT ==================== */
+.home-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ==================== HERO SECTION ==================== */
+.hero {
+  padding: 4rem 2rem;
+  text-align: center;
+  animation: fadeIn 0.8s ease-out 0.2s both;
+}
+
+.hero-content h2 {
+  font-size: 2.5rem;
+  color: #1e3a8a;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.hero-content p {
+  font-size: 1.125rem;
+  color: #6b7280;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+/* ==================== FEATURES SECTION ==================== */
+.features {
+  padding: 4rem 2rem;
+  background: #f9fafb;
+  border-radius: 12px;
+  margin: 2rem 0;
+  animation: fadeIn 0.8s ease-out 0.4s both;
+}
+
+.section-title {
+  font-size: 2rem;
+  color: #1e3a8a;
+  text-align: center;
+  margin-bottom: 3rem;
+  font-weight: 700;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.feature-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.feature-card h3 {
+  font-size: 1.25rem;
+  color: #1e3a8a;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.feature-card p {
+  color: #6b7280;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ==================== INFO SECTION ==================== */
+.info {
+  padding: 4rem 2rem;
+  animation: fadeIn 0.8s ease-out 0.6s both;
+}
+
+.info-box {
+  background: white;
+  border-left: 4px solid #3b82f6;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.info-box h2 {
+  color: #1e3a8a;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.info-list {
+  color: #6b7280;
+  line-height: 1.8;
+  padding-left: 1.5rem;
+}
+
+.info-list li {
+  margin-bottom: 1rem;
+  color: #374151;
+}
+
+.info-list strong {
+  color: #1e3a8a;
+}
+
+/* ==================== CTA SECTION ==================== */
+.cta {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+  border-radius: 12px;
+  margin: 4rem 0;
+  animation: fadeIn 0.8s ease-out 0.8s both;
+}
+
+.cta-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.cta-content p {
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  opacity: 0.95;
+}
+
+/* ==================== BUTTONS ==================== */
+.btn-primary {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 0.875rem 2rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+}
+
+.btn-primary:hover {
+  background-color: #2563eb;
+  box-shadow: 0 8px 12px rgba(59, 130, 246, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-large {
+  padding: 1rem 3rem;
+  font-size: 1.125rem;
+}
+
+.cta .btn-primary {
+  background-color: white;
+  color: #1e3a8a;
+}
+
+.cta .btn-primary:hover {
+  background-color: #f3f4f6;
+}
+
+/* ==================== FOOTER ==================== */
+.home-footer {
+  background: #1e3a8a;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  margin-top: 4rem;
+  font-size: 0.9rem;
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 768px) {
+  .home-title {
+    font-size: 2rem;
+  }
+
+  .home-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-content h2 {
+    font-size: 1.75rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .btn-large {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-header {
+    padding: 2rem 1rem;
+  }
+
+  .home-title {
+    font-size: 1.5rem;
+  }
+
+  .home-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .hero {
+    padding: 2rem 1rem;
+  }
+
+  .hero-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .features {
+    padding: 2rem 1rem;
+  }
+
+  .info {
+    padding: 2rem 1rem;
+  }
+
+  .cta {
+    padding: 2rem 1rem;
+    margin: 2rem 0;
+  }
+
+  .btn-primary {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}

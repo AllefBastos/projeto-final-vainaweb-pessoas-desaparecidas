@@ -8,7 +8,7 @@ export async function criarTabela() {
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       nome TEXT,
       idade INTEGER,
-      email TEXT,
+      ultimaLocalizacao TEXT,
       telefone TEXT
     )
   `);
@@ -20,9 +20,9 @@ export async function inserirPessoa(req, res) {
   const pessoa = req.body;
 
   await db.run(`
-    INSERT INTO pessoa (nome, idade, email, telefone)
+    INSERT INTO pessoa (nome, idade, ultimaLocalizacao, telefone)
     VALUES (?, ?, ?, ?)
-  `, [pessoa.nome, pessoa.idade, pessoa.email, pessoa.telefone]);
+  `, [pessoa.nome, pessoa.idade, pessoa.ultimaLocalizacao, pessoa.telefone]);
 
   res.json({ 
     "statusCode": 201,
@@ -38,10 +38,10 @@ export async function updatePessoa(req, res) {
     SET 
       nome = COALESCE(?, nome),
       idade = COALESCE(?, idade),
-      email = COALESCE(?, email),
+      ultimaLocalizacao = COALESCE(?, ultimaLocalizacao),
       telefone = COALESCE(?, telefone)
     WHERE id = ?
-  `, [pessoa.nome, pessoa.idade, pessoa.email, pessoa.telefone, pessoa.id]);
+  `, [pessoa.nome, pessoa.idade, pessoa.ultimaLocalizacao, pessoa.telefone, pessoa.id]);
   
   res.json({ 
     "statusCode": 200,

@@ -1,0 +1,296 @@
+/* ==================== CONTAINER ==================== */
+.form-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-back {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    background: white;
+    border: 2px solid #e5e7eb;
+    color: #6b7280;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.btn-back:hover {
+    background: #f9fafb;
+    border-color: #3b82f6;
+    color: #3b82f6;
+    transform: translateX(-4px);
+}
+
+@media (max-width: 480px) {
+    .btn-back {
+        position: static;
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+}
+
+/* ==================== FORM STYLES ==================== */
+.formulario {
+    background: white;
+    padding: 3rem;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    animation: slideUp 0.6s ease-out;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.form-header h2 {
+    font-size: 1.875rem;
+    color: #1e3a8a;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.form-header p {
+    color: #6b7280;
+    font-size: 0.95rem;
+}
+
+/* ==================== FORM FIELDS ==================== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-nome,
+.form-idade,
+.form-email,
+.form-telefone {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.form-nome {
+    animation-delay: 0.1s;
+}
+
+.form-idade {
+    animation-delay: 0.2s;
+}
+
+.form-email {
+    animation-delay: 0.3s;
+}
+
+.form-telefone {
+    animation-delay: 0.4s;
+}
+
+label {
+    font-weight: 600;
+    color: #374151;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+input {
+    padding: 0.875rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background: #f9fafb;
+}
+
+input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+input:hover {
+    border-color: #d1d5db;
+}
+
+input::placeholder {
+    color: #9ca3af;
+}
+
+/* ==================== BUTTONS ==================== */
+.btn-submit {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+.btn-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ==================== MESSAGES ==================== */
+.message {
+    padding: 1rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    animation: slideDown 0.4s ease-out;
+    margin-bottom: 0.5rem;
+}
+
+.success-message {
+    background: #d1fae5;
+    color: #065f46;
+    border-left: 4px solid #10b981;
+}
+
+.error-message {
+    background: #fee2e2;
+    color: #7f1d1d;
+    border-left: 4px solid #ef4444;
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 768px) {
+    .formulario {
+        padding: 2rem;
+    }
+
+    .form-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .form-header p {
+        font-size: 0.9rem;
+    }
+
+    label {
+        font-size: 0.9rem;
+    }
+
+    input {
+        padding: 0.75rem;
+        font-size: 0.95rem;
+    }
+
+    .btn-submit {
+        padding: 0.875rem;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-container {
+        padding: 1rem;
+        min-height: auto;
+    }
+
+    .formulario {
+        padding: 1.5rem;
+        max-width: 100%;
+    }
+
+    .form-header h2 {
+        font-size: 1.25rem;
+    }
+
+    .form-header {
+        margin-bottom: 1.5rem;
+    }
+
+    form {
+        gap: 1rem;
+    }
+
+    .form-nome,
+    .form-idade,
+    .form-email,
+    .form-telefone {
+        gap: 0.375rem;
+    }
+
+    input {
+        padding: 0.75rem;
+        font-size: 16px;
+    }
+
+    .btn-submit {
+        padding: 0.875rem;
+        margin-top: 0.5rem;
+    }
+
+    .message {
+        padding: 0.875rem;
+        font-size: 0.9rem;
+    }
+}
