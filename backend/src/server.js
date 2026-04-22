@@ -3,6 +3,7 @@ import router from './routes/routes.js';
 import cors from 'cors';
 import 'dotenv/config';
 
+const BACKEND_URL = process.env.BACKEND_URL;
 const app = express();
 
 app.use(cors({ origin: '*' }));
