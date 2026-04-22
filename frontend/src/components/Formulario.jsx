@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './formulario.css'
 
-const BACKEND_URL = process.env.BACKEND_URL
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 const Formulario = ({ onBackHome }) => {
 
