@@ -1,6 +1,65 @@
+import { useState, useEffect } from 'react'
 import './home.css'
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
+
 const Home = ({ onNavigateToForm }) => {
+    const [pessoas, setPessoas] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [editingPessoa, setEditingPessoa] = useState(null)
+
+    // Buscar pessoas do backend
+    const fetchPessoas = async () => {
+        try {
+            const response = await fetch(`${BACKEND_URL}/pessoas`)
+            if (response.ok) {
+                const data = await response.json()
+                setPessoas(data)
+            }
+        } catch (error) {
+            console.error('Erro ao buscar pessoas:', error)
+        } finally {
+            setLoading(false)
+        }
+    }
+
+    useEffect(() => {
+        fetchPessoas()
+    }, [])
+
+    // Função para excluir pessoa
+    const handleDelete = async (id) => {
+        if (!confirm('Tem certeza que deseja excluir esta pessoa?')) {
+            return
+        }
+
+        try {
+            const response = await fetch(`${BACKEND_URL}/pessoa`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id })
+            })
+
+            if (response.ok) {
+                setPessoas(pessoas.filter(pessoa => pessoa.id !== id))
+                alert('Pessoa excluída com sucesso!')
+            } else {
+                alert('Erro ao excluir pessoa')
+            }
+        } catch (error) {
+            console.error('Erro ao excluir pessoa:', error)
+            alert('Erro ao excluir pessoa')
+        }
+    }
+
+    // Função para editar pessoa
+    const handleEdit = (pessoa) => {
+        setEditingPessoa(pessoa)
+        onNavigateToForm(pessoa)
+    }
+
     return (
         <div className="home">
             {/* Header */}
@@ -21,9 +80,88 @@ const Home = ({ onNavigateToForm }) => {
                             Uma plataforma simples e eficiente para o registro e gerenciamento
                             de informações de pessoas. Organize seus dados com facilidade e segurança.
                         </p>
-                        <button className="btn-primary" onClick={onNavigateToForm}>
+                        <button className="btn-primary" onClick={() => {
+                            setEditingPessoa(null)
+                            onNavigateToForm()
+                        }}>
                             Iniciar Cadastro
                         </button>
+                    </div>
+                </section>
+
+                {/* Lista de Pessoas Cadastradas */}
+                <section className="pessoas-section">
+                    <div className="pessoas-container">
+                        <h2 className="section-title">Pessoas Cadastradas</h2>
+
+                        {loading ? (
+                            <div className="loading">
+                                <p>Carregando pessoas...</p>
+                            </div>
+                        ) : pessoas.length === 0 ? (
+                            <div className="empty-state">
+                                <div className="empty-icon">📋</div>
+                                <h3>Nenhuma pessoa cadastrada</h3>
+                                <p>Comece cadastrando a primeira pessoa no sistema.</p>
+                                <button className="btn-primary" onClick={() => {
+                                    setEditingPessoa(null)
+                                    onNavigateToForm()
+                                }}>
+                                    Cadastrar Primeira Pessoa
+                                </button>
+                            </div>
+                        ) : (
+                            <div className="pessoas-grid">
+                                {pessoas.map((pessoa) => (
+                                    <article key={pessoa.id} className="pessoa-card">
+                                        <div className="pessoa-header">
+                                            <h3 className="pessoa-nome">{pessoa.nome}</h3>
+                                            <div className="pessoa-actions">
+                                                <button
+                                                    className="btn-edit"
+                                                    onClick={() => handleEdit(pessoa)}
+                                                    title="Editar pessoa"
+                                                >
+                                                    ✏️
+                                                </button>
+                                                <button
+                                                    className="btn-delete"
+                                                    onClick={() => handleDelete(pessoa.id)}
+                                                    title="Excluir pessoa"
+                                                >
+                                                    🗑️
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div className="pessoa-info">
+                                            <div className="info-item">
+                                                <span className="info-label">Idade:</span>
+                                                <span className="info-value">{pessoa.idade} anos</span>
+                                            </div>
+
+                                            {pessoa.ultimaLocalizacao && (
+                                                <div className="info-item">
+                                                    <span className="info-label">Última localização:</span>
+                                                    <span className="info-value">{pessoa.ultimaLocalizacao}</span>
+                                                </div>
+                                            )}
+
+                                            {pessoa.telefone && (
+                                                <div className="info-item">
+                                                    <span className="info-label">Telefone:</span>
+                                                    <span className="info-value">{pessoa.telefone}</span>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        <div className="pessoa-id">
+                                            ID: #{pessoa.id}
+                                        </div>
+                                    </article>
+                                ))}
+                            </div>
+                        )}
                     </div>
                 </section>
 
@@ -63,9 +201,9 @@ const Home = ({ onNavigateToForm }) => {
                         <h2>Como Funciona?</h2>
                         <ol className="info-list">
                             <li><strong>Acesse o formulário:</strong> Clique no botão de cadastro</li>
-                            <li><strong>Preencha os dados:</strong> Nome, idade, email e telefone</li>
+                            <li><strong>Preencha os dados:</strong> Nome, idade, última localização e telefone</li>
                             <li><strong>Confirme:</strong> Revise e envie o formulário</li>
-                            <li><strong>Pronto!</strong> Seus dados foram registrados com sucesso</li>
+                            <li><strong>Gerencie:</strong> Edite ou exclua registros quando necessário</li>
                         </ol>
                     </div>
                 </section>
@@ -75,7 +213,10 @@ const Home = ({ onNavigateToForm }) => {
                     <div className="cta-content">
                         <h2>Pronto para começar?</h2>
                         <p>Registre seu primeiro cadastro agora mesmo!</p>
-                        <button className="btn-primary btn-large" onClick={onNavigateToForm}>
+                        <button className="btn-primary btn-large" onClick={() => {
+                            setEditingPessoa(null)
+                            onNavigateToForm()
+                        }}>
                             Cadastrar Agora
                         </button>
                     </div>

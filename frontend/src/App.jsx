@@ -5,16 +5,27 @@ import Formulario from './components/Formulario'
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home')
+  const [editingPessoa, setEditingPessoa] = useState(null)
 
-  const navigateToForm = () => setCurrentPage('formulario')
-  const navigateToHome = () => setCurrentPage('home')
+  const navigateToForm = (pessoa = null) => {
+    setEditingPessoa(pessoa)
+    setCurrentPage('formulario')
+  }
+
+  const navigateToHome = () => {
+    setEditingPessoa(null)
+    setCurrentPage('home')
+  }
 
   return (
     <div className="app">
       {currentPage === 'home' ? (
         <Home onNavigateToForm={navigateToForm} />
       ) : (
-        <Formulario onBackHome={navigateToHome} />
+        <Formulario
+          onBackHome={navigateToHome}
+          editingPessoa={editingPessoa}
+        />
       )}
     </div>
   )
